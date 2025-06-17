@@ -1,137 +1,381 @@
+/* Обнуление стилей для всех элементов */
+* {
+  margin: 0; /* Убирает внешние отступы */
+  padding: 0; /* Убирает внутренние отступы */
+  box-sizing: border-box; /* Включает padding и border в общую ширину/высоту элемента */
+}
+
+/* Основные стили для всего сайта */
+body {
+  font-family: 'Roboto', sans-serif; /* Устанавливает шрифт Roboto для текста */
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%); /* Градиентный фон от белого к светло-голубому */
+  color: #2c3b5c; /* Цвет текста по умолчанию */
+  line-height: 1.6; /* Межстрочный интервал для улучшения читаемости */
+}
+
+/* Стили для шапки сайта */
+.header {
+  display: flex; /* Использует гибкий контейнер для расположения элементов */
+  justify-content: space-between; /* Распределяет элементы по краям контейнера */
+  align-items: center; /* Выравнивает элементы по центру по вертикали */
+  padding: 20px 40px; /* Внутренние отступы: 20px сверху/снизу, 40px слева/справа */
+  background: linear-gradient(90deg, #2c3b5c 0%, #4a6fa5 100%); /* Градиентный фон шапки */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Тень под шапкой для эффекта глубины */
+  position: relative; /* Относительное позиционирование для дочерних элементов */
+}
+
+/* Стили для логотипа в шапке */
+.logo {
+  font-size: 24px; /* Размер шрифта логотипа */
+  font-weight: 700; /* Жирность шрифта (полужирный) */
+  color: #ffffff; /* Белый цвет текста */
+}
+
+/* Стили для навигационного меню */
+.nav {
+  display: flex; /* Гибкий контейнер для ссылок */
+  gap: 20px; /* Отступ между ссылками */
+}
+
+/* Стили для ссылок в навигации */
+.nav a {
+  color: #a3bffa; /* Светло-голубой цвет ссылок */
+  text-decoration: none; /* Убирает подчеркивание */
+  font-weight: 500; /* Средняя жирность шрифта */
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении (0.3 секунды) */
+}
+
+/* Эффект при наведении на ссылки навигации */
+.nav a:hover {
+  color: #e0e7f0; /* Более светлый оттенок при наведении */
+}
+
+/* Стили для переключателя меню (для мобильных устройств) */
+.menu-toggle {
+  display: none; /* Скрыт по умолчанию на больших экранах */
+  font-size: 24px; /* Размер шрифта иконки меню */
+  color: #ffffff; /* Белый цвет */
+  cursor: pointer; /* Курсор в виде указателя при наведении */
+}
+
+/* Стили для основного контейнера контента */
+.content {
+  max-width: 1200px; /* Максимальная ширина контента */
+  margin: 0 auto; /* Центрирует контейнер по горизонтали */
+  padding: 40px 20px; /* Отступы: 40px сверху/снизу, 20px слева/справа */
+}
+
+/* Стили для геройского блока на главной странице */
+.hero {
+  text-align: center; /* Центрирует текст внутри блока */
+  padding: 60px 20px; /* Отступы: 60px сверху/снизу, 20px слева/справа */
+  background: url('hero-bg.jpg') no-repeat center/cover; /* Фоновая картинка, центрированная и растянутая */
+  color: #ffffff; /* Белый цвет текста */
+  border-radius: 10px; /* Скругленные углы */
+  margin-bottom: 40px; /* Отступ снизу */
+  animation: fadeIn 1s ease-in; /* Анимация появления (1 секунда) */
+}
+
+/* Стили для заголовка в геройском блоке */
+.hero h1 {
+  font-size: 36px; /* Размер шрифта заголовка */
+  margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Стили для подзаголовка в геройском блоке */
+.subtitle {
+  font-size: 18px; /* Размер шрифта подзаголовка */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Стили для контейнера кнопок в геройском блоке */
+.hero-buttons {
+  display: flex; /* Гибкий контейнер для кнопок */
+  justify-content: center; /* Центрирует кнопки по горизонтали */
+  gap: 10px; /* Отступ между кнопками */
+}
+
+/* Общие стили для кнопок */
+.button {
+  padding: 12px 25px; /* Внутренние отступы кнопки */
+  border-radius: 25px; /* Скругленные углы */
+  text-decoration: none; /* Убирает подчеркивание текста */
+  font-weight: 500; /* Средняя жирность шрифта */
+  transition: transform 0.3s ease, background 0.3s ease; /* Плавное изменение размера и фона при наведении */
+}
+
+/* Стили для основной кнопки */
+.primary {
+  background: #4a6fa5; /* Синий фон для основной кнопки */
+}
+
+/* Стили для вторичной кнопки */
+.secondary {
+  background: #a3bffa; /* Светло-голубой фон для вторичной кнопки */
+}
+
+/* Эффект при наведении на кнопки */
+.button:hover {
+  transform: scale(1.05); /* Увеличивает кнопку на 5% при наведении */
+}
+
+/* Стили для секций предпросмотра каталога и инструкций по доставке */
+.catalog-preview, .delivery-instructions {
+  margin-bottom: 40px; /* Отступ снизу для разделения секций */
+}
+
+/* Стили для заголовков секций */
+.section-title {
+  font-size: 28px; /* Размер шрифта заголовка */
+  margin-bottom: 20px; /* Отступ снизу */
+  color: #2c3b5c; /* Темно-синий цвет текста */
+  text-align: center; /* Центрирует заголовок */
+}
+
+/* Стили для контейнеров карточек (каталог и инструкции) */
+.cards-container, .instruction-cards {
+  display: grid; /* Использует сетку для расположения карточек */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивные колонки: минимум 250px, растягиваются равномерно */
+  gap: 20px; /* Отступ между карточками */
+}
+
+/* Стили для отдельных карточек */
+.card {
+  background: #ffffff; /* Белый фон карточки */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Легкая тень для эффекта глубины */
+  text-align: center; /* Центрирует текст внутри карточки */
+  transition: transform 0.3s ease; /* Плавное изменение положения при наведении */
+}
+
+/* Эффект при наведении на карточку */
+.card:hover {
+  transform: translateY(-5px); /* Поднимает карточку на 5px вверх */
+}
+
+/* Стили для заголовков внутри карточек */
+.card h3 {
+  font-size: 20px; /* Размер шрифта заголовка карточки */
+  margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Стили для блока ссылок на соцсети */
+.social-links {
+  text-align: center; /* Центрирует ссылки */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+/* Стили для иконок соцсетей */
+.social-icon {
+  font-size: 24px; /* Размер шрифта иконок */
+  color: #2c3b5c; /* Темно-синий цвет */
+  margin: 0 15px; /* Отступы слева и справа */
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+/* Эффект при наведении на иконки соцсетей */
+.social-icon:hover {
+  color: #4a6fa5; /* Более светлый синий цвет при наведении */
+}
+
+/* Медиа-запросы для адаптивности на экранах до 768px */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px; /* Уменьшает отступы в шапке */
+  }
+  .nav {
+    display: none; /* Скрывает навигацию по умолчанию */
+    position: absolute; /* Абсолютное позиционирование под шапкой */
+    top: 60px; /* Расположение ниже шапки */
+    left: 0; /* Примыкает к левому краю */
+    right: 0; /* Примыкает к правому краю */
+    background: #2c3b5c; /* Темно-синий фон */
+    flex-direction: column; /* Располагает ссылки вертикально */
+    padding: 10px; /* Внутренние отступы */
+  }
+  .nav.active {
+    display: flex; /* Показывает навигацию при активации (например, через JS) */
+  }
+  .menu-toggle {
+    display: block; /* Показывает переключатель меню на мобильных устройствах */
+  }
+  .hero {
+    padding: 40px 10px; /* Уменьшает отступы в геройском блоке */
+  }
+  .hero h1 {
+    font-size: 28px; /* Уменьшает размер шрифта заголовка */
+  }
+  .button {
+    padding: 10px 20px; /* Уменьшает отступы в кнопках */
+  }
+}
+
+/* Анимация появления для геройского блока */
+@keyframes fadeIn {
+  from { opacity: 0; } /* Начальное состояние: полностью прозрачный */
+  to { opacity: 1; } /* Конечное состояние: полностью непрозрачный */
+}
+
 /* Существующие стили остаются, добавлю новые */
+
+/* Стили для списка продуктов в каталоге */
 .product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 20px;
+  display: grid; /* Используем сетку для расположения карточек продуктов */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Автоматическое количество колонок с минимальной шириной 250px */
+  gap: 20px; /* Отступы между карточками */
+  margin-bottom: 20px; /* Нижний отступ для отделения от других секций */
 }
 
+/* Стили для отдельной карточки продукта */
 .product-card {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: transform 0.3s ease;
+  background: #ffffff; /* Белый фон карточки */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Тень для эффекта глубины */
+  text-align: center; /* Центрирование текста внутри карточки */
+  transition: transform 0.3s ease; /* Плавный переход для эффекта при наведении */
 }
 
+/* Эффект при наведении на карточку продукта */
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Поднятие карточки вверх на 5px при наведении */
 }
 
+/* Стили для заголовка внутри карточки продукта */
 .product-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 20px; /* Размер шрифта заголовка */
+  margin-bottom: 10px; /* Нижний отступ для отделения от остального контента */
 }
 
+/* Стили для скрытого блока с деталями продукта */
 .product-card .details {
-  display: none;
-  padding: 10px 0;
+  display: none; /* По умолчанию детали скрыты */
+  padding: 10px 0; /* Внутренние отступы для блока деталей */
 }
 
+/* Показ деталей, когда карточка активна */
 .product-card.active .details {
-  display: block;
+  display: block; /* Показываем детали при добавлении класса active */
 }
 
+/* Стили для кнопки внутри карточки продукта */
 .product-card button {
-  background: #4a6fa5;
-  color: #ffffff;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  background: #4a6fa5; /* Основной цвет фона кнопки */
+  color: #ffffff; /* Белый цвет текста */
+  border: none; /* Убираем стандартную рамку */
+  padding: 8px 15px; /* Внутренние отступы кнопки */
+  border-radius: 5px; /* Скругленные углы */
+  cursor: pointer; /* Курсор в виде указателя при наведении */
+  transition: background 0.3s ease; /* Плавный переход цвета фона при наведении */
 }
 
+/* Эффект при наведении на кнопку в карточке */
 .product-card button:hover {
-  background: #2c3b5c;
+  background: #2c3b5c; /* Темный цвет фона при наведении */
 }
 
+/* Стили для списка товаров в корзине */
 .cart-items {
-  margin: 10px 0;
+  margin: 10px 0; /* Внешние отступы сверху и снизу */
 }
 
+/* Стили для элементов списка в корзине */
 .cart-items li {
-  list-style: none;
-  margin: 5px 0;
+  list-style: none; /* Убираем маркеры списка */
+  margin: 5px 0; /* Отступы между элементами списка */
 }
 
+/* Стили для формы оформления заказа */
 .order-form {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  max-width: 600px;
-  margin: 0 auto;
+  background: #ffffff; /* Белый фон формы */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Тень для эффекта глубины */
+  max-width: 600px; /* Максимальная ширина формы */
+  margin: 0 auto; /* Центрирование формы на странице */
 }
 
+/* Стили для меток в форме */
 .order-form label {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Нижний отступ для меток */
 }
 
+/* Стили для полей ввода, выпадающих списков и текстовых областей в форме */
 .order-form input, .order-form select, .order-form textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #e0e7f0;
-  border-radius: 5px;
+  width: 100%; /* Полная ширина полей */
+  padding: 8px; /* Внутренние отступы */
+  border: 1px solid #e0e7f0; /* Светлая рамка */
+  border-radius: 5px; /* Скругленные углы */
 }
 
+/* Стили для сообщений (например, об успешной отправке формы) */
 .message {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  display: none;
+  margin-top: 10px; /* Верхний отступ */
+  padding: 10px; /* Внутренние отступы */
+  border-radius: 5px; /* Скругленные углы */
+  display: none; /* По умолчанию сообщение скрыто */
 }
 
+/* Стили для сообщения об успехе */
 .message.success {
-  background: #d4edda;
-  color: #155724;
-  display: block;
+  background: #d4edda; /* Зеленый фон для успешного сообщения */
+  color: #155724; /* Темно-зеленый цвет текста */
+  display: block; /* Показываем сообщение при добавлении класса success */
 }
 
+/* Стили для блока с контактной информацией */
 .contact-info {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: #ffffff; /* Белый фон */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Тень для эффекта глубины */
 }
 
+/* Стили для контейнера с картой */
 .map-container {
-  margin-top: 20px;
+  margin-top: 20px; /* Верхний отступ для отделения от других блоков */
 }
 
+/* Стили для кнопки внутри контейнера с картой (например, "Проложить маршрут") */
 .map-container .button {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
+  display: block; /* Кнопка занимает всю ширину */
+  margin-top: 10px; /* Верхний отступ */
+  text-align: center; /* Центрирование текста внутри кнопки */
 }
 
+/* Стили для секции "О нас" */
 .about-section {
-  text-align: center;
+  text-align: center; /* Центрирование текста в секции */
 }
 
+/* Стили для блока миссии на странице "О нас" */
 .mission {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-size: 20px; /* Размер шрифта */
+  font-weight: 700; /* Жирный текст */
+  margin-bottom: 20px; /* Нижний отступ */
 }
 
+/* Стили для галереи на странице "О нас" */
 .gallery {
-  margin: 20px 0;
+  margin: 20px 0; /* Внешние отступы сверху и снизу */
 }
 
+/* Стили для элементов галереи (например, изображений) */
 .gallery-item {
-  max-width: 100%;
-  border-radius: 10px;
+  max-width: 100%; /* Максимальная ширина изображения */
+  border-radius: 10px; /* Скругленные углы */
 }
 
+/* Стили для блока истории на странице "О нас" */
 .story {
-  margin: 20px 0;
+  margin: 20px 0; /* Внешние отступы сверху и снизу */
 }
 
+/* Стили для секции политики обработки данных */
 .privacy-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: #ffffff; /* Белый фон */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Тень для эффекта глубины */
 }
