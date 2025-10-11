@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Каталог кормов — Витрина</title>
+  <!-- Подключите шрифты локально. Пример: /assets/fonts/... -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- Если шрифты ещё не залиты, временно сработают системные fallback’и. -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme">
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.svg" alt="Логотип" class="logo">
+    <span class="brand-name">Чемпион</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="catalog.html" class="nav-link is-active">Каталог</a>
+    <a href="index.html#contacts" class="nav-link">Контакты</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1 class="h1">Каталог</h1>
+
+  <!-- Панель фильтров -->
+  <form id="filters" class="filters" aria-label="Фильтры каталога">
+    <div class="filter">
+      <label for="brand">Бренд</label>
+      <select id="brand" name="brand">
+        <option value="">Все бренды</option>
+        <option>Grandorf Holistic</option>
+        <option>Grandorf Fresh</option>
+        <option>Grandorf Vet</option>
+        <option>Premier</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="type">Тип животного</label>
+      <select id="type" name="type">
+        <option value="">Кошки и собаки</option>
+        <option value="cat">Кошка</option>
+        <option value="dog">Собака</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="kind">Тип корма</label>
+      <select id="kind" name="kind">
+        <option value="">Сухой или влажный</option>
+        <option value="dry">Сухой</option>
+        <option value="wet">Влажный</option>
+      </select>
+    </div>
+
+    <div class="filter wide">
+      <label for="q">Поиск</label>
+      <input id="q" name="q" type="search" placeholder="Название, ингредиенты...">
+    </div>
+
+    <div class="filter actions">
+      <button type="submit" class="btn btn-primary">Показать</button>
+      <button type="reset" class="btn btn-ghost" id="resetFilters">Сброс</button>
+    </div>
+  </form>
+
+  <!-- Сетка карточек -->
+  <div id="catalogGrid" class="grid-cards" aria-live="polite"></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="contacts container">
+    <div class="contacts-block">
+      <h3 class="h3">Контакты</h3>
+      <p><strong>Зоомагазин «Чемпион»</strong></p>
+      <p>Челябинск, Свердловский проспект 37, помещение 13</p>
+      <p>Телефон: <a href="tel:+79624854625">+7 (962) 485-46-25</a></p>
+      <p>График: ежедневно 10:00–20:00</p>
+    </div>
+    <div class="socials">
+      <h3 class="h3">Соцсети</h3>
+      <p>
+        <a class="social-link" href="#">ВКонтакте</a>
+        <a class="social-link" href="#">Telegram</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-small">© Чемпион, 2025</div>
+</footer>
+
+<button class="to-top" aria-label="Наверх">↑</button>
+
+<script src="data.js"></script>
+<script src="app.js" defer></script>
+<script>
+// Инициализация каталога
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('catalogGrid');
+  const form = document.getElementById('filters');
+  const resetBtn = document.getElementById('resetFilters');
+
+  // Прочитать параметры из URL
+  const params = new URLSearchParams(location.search);
+  ['brand','type','kind','q'].forEach(k=>{
+    const el = form.elements[k];
+    if (el && params.get(k)) el.value = params.get(k);
+  });
+
+  function matchesFilters(item, f) {
+    if (f.brand && item.brand !== f.brand) return false;
+    if (f.type && item.animal !== f.type) return false;
+    if (f.kind && item.kind !== f.kind) return false;
+    if (f.q) {
+      const needle = f.q.toLowerCase();
+      const hay = [item.title, item.desc, item.analysis?.join(' '), item.additives?.join(' ')].join(' ').toLowerCase();
+      if (!hay.includes(needle)) return false;
+    }
+    return true;
+  }
+
+  function render(items) {
+    grid.innerHTML = '';
+    if (!items.length) {
+      grid.innerHTML = `<div class="empty">Ничего не найдено. Попробуйте снять часть фильтров.</div>`;
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    items.forEach(p=>{
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = `product.html?id=${encodeURIComponent(p.id)}`;
+      a.innerHTML = `
+        <div class="card-media">
+          <img src="${p.images?.pack || 'assets/placeholder-pack.jpg'}" alt="Упаковка ${p.title}">
+        </div>
+        <div class="card-body">
+          <div class="card-brand">${p.brand}</div>
+          <h3 class="card-title">${p.title}</h3>
+          <div class="chip-row">
+            <span class="chip">${p.animal === 'cat' ? 'Кошка' : 'Собака'}</span>
+            <span class="chip">${p.kind === 'dry' ? 'Сухой' : 'Влажный'}</span>
+          </div>
+          <div class="weights">${p.sizes.map(s=>`${s.weight} — ${s.price} ₽`).slice(0,3).join(' · ')}</div>
+        </div>`;
+      frag.appendChild(a);
+    });
+    grid.appendChild(frag);
+  }
+
+  function applyFilters(pushState=true) {
+    const f = Object.fromEntries(new FormData(form).entries());
+    const filtered = PRODUCTS.filter(item => matchesFilters(item, f));
+    render(filtered);
+    if (pushState) {
+      const q = new URLSearchParams(f);
+      for (const [k,v] of [...q]) if (!v) q.delete(k);
+      history.replaceState(null, '', q.toString() ? `?${q}` : location.pathname);
+    }
+  }
+
+  form.addEventListener('submit', e => { e.preventDefault(); applyFilters(true); });
+  resetBtn.addEventListener('click', e => {
+    e.preventDefault();
+    form.reset();
+    applyFilters(true);
+  });
+
+  // Первый рендер
+  applyFilters(false);
+});
+</script>
+</body>
+</html>

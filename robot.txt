@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://grandorf74.ru/sitemap.xml
+Host: grandorf74.ru

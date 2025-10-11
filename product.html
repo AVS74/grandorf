@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Описание корма — Витрина</title>
+  <!-- Подключите шрифты локально. Пример: /assets/fonts/... -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- Если шрифты ещё не залиты, временно сработают системные fallback’и. -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme">
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.svg" alt="Логотип" class="logo">
+    <span class="brand-name">Чемпион</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="catalog.html" class="nav-link">Каталог</a>
+    <a href="index.html#contacts" class="nav-link">Контакты</a>
+  </nav>
+</header>
+
+<main class="container product">
+  <a href="catalog.html" class="back-link">← В каталог</a>
+  <article id="product" class="product-layout" aria-live="polite">
+    <!-- Заполняется JS -->
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="contacts container">
+    <div class="contacts-block">
+      <h3 class="h3">Контакты</h3>
+      <p><strong>Зоомагазин «Чемпион»</strong></p>
+      <p>Челябинск, Свердловский проспект 37, помещение 13</p>
+      <p>Телефон: <a href="tel:+79624854625">+7 (962) 485-46-25</a></p>
+      <p>График: ежедневно 10:00–20:00</p>
+    </div>
+    <div class="socials">
+      <h3 class="h3">Соцсети</h3>
+      <p>
+        <a class="social-link" href="#">ВКонтакте</a>
+        <a class="social-link" href="#">Telegram</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-small">© Чемпион, 2025</div>
+</footer>
+
+<button class="to-top" aria-label="Наверх">↑</button>
+
+<script src="data.js"></script>
+<script src="app.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('product');
+  const id = new URLSearchParams(location.search).get('id');
+  const item = PRODUCTS.find(p => String(p.id) === String(id));
+  if (!item) {
+    container.innerHTML = `<div class="empty">Товар не найден.</div>`;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="product-gallery">
+      <img src="${item.images?.pack || 'assets/placeholder-pack.jpg'}" alt="Упаковка ${item.title}">
+      ${item.images?.kibble ? `<img src="${item.images.kibble}" alt="Гранулы ${item.title}">` : ''}
+    </div>
+    <div class="product-info">
+      <div class="card-brand">${item.brand}</div>
+      <h1 class="h1 product-title">${item.title}</h1>
+      <p class="product-desc">${item.desc}</p>
+
+      <section class="specs">
+        <h2 class="h3">Гарантированный анализ</h2>
+        <ul class="spec-list">
+          ${item.analysis.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </section>
+
+      <section class="specs">
+        <h2 class="h3">Добавки</h2>
+        <ul class="spec-list">
+          ${item.additives.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </section>
+
+      <section class="sizes">
+        <h2 class="h3">Фасовки и цены</h2>
+        <ul class="size-list">
+          ${item.sizes.map(s => `<li><span>${s.weight}</span><strong>${s.price} ₽</strong></li>`).join('')}
+        </ul>
+      </section>
+
+      <div class="product-cta">
+        <a class="btn btn-primary" href="tel:+79624854625">Заказать по телефону</a>
+        <a class="btn btn-ghost" href="catalog.html?brand=${encodeURIComponent(item.brand)}">Смотреть ещё ${item.brand}</a>
+      </div>
+    </div>
+  `;
+});
+</script>
+</body>
+</html>
