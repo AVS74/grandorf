@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Каталог кормов — Чемпион</title>
+
+  <!-- Стили сайта -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme">
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.svg" alt="Логотип" class="logo">
+    <span class="brand-name">Чемпион</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="catalog.html" class="nav-link is-active">Каталог</a>
+    <a href="index.html#contacts" class="nav-link">Контакты</a>
+  </nav>
+</header>
+
+<main class="container catalog">
+  <h1 class="h1">Каталог кормов</h1>
+
+  <!-- Контейнер, куда подгрузятся карточки -->
+  <div class="catalog-grid" aria-live="polite">
+    <p>Загрузка товаров...</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="contacts container">
+    <div class="contacts-block">
+      <h3 class="h3">Контакты</h3>
+      <p><strong>Зоомагазин «Чемпион»</strong></p>
+      <p>Челябинск, Свердловский проспект 37, помещение 13</p>
+      <p>Телефон: <a href="tel:+79624854625">+7 (962) 485-46-25</a></p>
+      <p>График: ежедневно 10:00–20:00</p>
+    </div>
+    <div class="socials">
+      <h3 class="h3">Соцсети</h3>
+      <p>
+        <a class="social-link" href="#">ВКонтакте</a>
+        <a class="social-link" href="#">Telegram</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-small">© Чемпион, 2025</div>
+</footer>
+
+<button class="to-top" aria-label="Наверх">↑</button>
+
+<!-- Подключаем данные -->
+<script src="data.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.catalog-grid');
+  if (!container || !window.PRODUCTS) {
+    container.innerHTML = '<p>Ошибка загрузки каталога.</p>';
+    return;
+  }
+
+  container.innerHTML = ''; // очистим временный текст
+
+  const nbsp = '\u00A0';
+  const ndash = ' — ';
+  const formatPrice = (n) => {
+    const x = typeof n === 'number' ? n : parseFloat(String(n).replace(/\s/g,'')) || 0;
+    return x.toLocaleString('ru-RU') + `${nbsp}₽`;
+  };
+
+  window.PRODUCTS.forEach(item => {
+    const img = item.images?.pack || 'assets/placeholder-pack.jpg';
+    const name = item.title || 'Без названия';
+    const brand = item.brand || '';
+    const firstSize = Array.isArray(item.sizes) && item.sizes.length ? item.sizes[0] : null;
+    const priceText = firstSize
+      ? `${firstSize.weight}${ndash}${formatPrice(firstSize.price)}`
+      : 'Цена уточняется';
+
+    // создаём карточку
+    const card = document.createElement('a');
+    card.className = 'catalog-card';
+    card.href = `product.html?id=${encodeURIComponent(item.id)}`;
+    card.innerHTML = `
+      <div class="card-image">
+        <img src="${img}" alt="${name}">
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">${name}</h2>
+        <p class="card-brand">${brand}</p>
+        <p class="card-price">${priceText}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // если товаров нет
+  if (!container.children.length) {
+    container.innerHTML = '<p>Каталог пуст. Проверь файл data.js.</p>';
+  }
+});
+</script>
+
+<style>
+/* простая сетка каталога */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+  gap: 24px;
+  margin-top: 1.5rem;
+}
+.catalog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  color: #1C1C1C;
+}
+.catalog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+.card-image {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+}
+.card-image img {
+  max-height: 180px;
+  max-width: 90%;
+  object-fit: contain;
+}
+.card-body {
+  padding: 1rem;
+  text-align: center;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: .25rem 0;
+  color: #2c3b5c;
+}
+.card-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .85rem;
+  color: #415A77;
+  margin-bottom: .5rem;
+}
+.card-price {
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  color: #D4AF37;
+  font-weight: 600;
+}
+</style>
+
+</body>
+</html>

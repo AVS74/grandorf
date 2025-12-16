@@ -1,0 +1,164 @@
+Результат проверки
+Так парсер микроразметки обработает вашу страницу
+
+og
+http://ogp.me/ns#locale
+@value = ru_RU
+http://ogp.me/ns#type
+@value = website
+http://ogp.me/ns#title
+@value = Grandorf и Premier — корма для кошек и собак | Чемпион, Челябинск
+http://ogp.me/ns#description
+@value = Премиальные корма для кошек и собак Grandorf и Premier. Доставка по Челябинску и области.
+http://ogp.me/ns#url
+@value = https://grandorf74.ru/
+http://ogp.me/ns#site_name
+@value = Зоомагазин «Чемпион»
+http://ogp.me/ns#image
+_:content
+@value = https://grandorf74.ru/assets/og/og-cover.jpg
+http://ogp.me/ns#image:width
+@value = 1200
+http://ogp.me/ns#image:height
+@value = 630
+http://ogp.me/ns#image:alt
+@value = Зоомагазин «Чемпион», корма Grandorf и Premier в Челябинске
+http://www.w3.org/1999/xhtml/vocab#alternate
+@id
+@value = https://grandorf74.ru/
+https://schema.org/Organization
+ПРЕДУПРЕЖДЕНИЕ: Не выполнено обязательное условие для структурированных сниппетов Яндекс.Справочника: поле address отсутствует или пусто
+ПРЕДУПРЕЖДЕНИЕ: Не выполнено обязательное условие для структурированных сниппетов Яндекс.Справочника: для данной категории организаций необходимо указать telephone
+https://schema.org/url
+@value = /
+https://schema.org/logo
+@value = /assets/logo.svg
+https://schema.org/name
+@value = Чемпион
+https://schema.org/Question
+https://schema.org/name
+@value = Где купить оригинальные корма Grandorf и Premier в Челябинске?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = В зоомагазине «Чемпион» по адресу: Челябинск, Свердловский проспект 37, помещение 13. Мы работаем с официальными дистрибьюторами Grandorf и Premier, продаём только оригинальную продукцию. Заказывайте онлайн в каталоге или по телефону +7 (962) 485-46-25.
+https://schema.org/Question
+https://schema.org/name
+@value = Есть ли доставка кормов Grandorf и Premier по Челябинску и области?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Да, доступна доставка по Челябинску и Челябинской области. Мы уточним удобное время и условия. Выберите товар в каталоге и оформите заказ — остальное возьмём на себя.
+https://schema.org/Question
+https://schema.org/name
+@value = Чем отличаются серии Grandorf Holistic и Grandorf Fresh?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Grandorf Holistic — гипоаллергенные рецептуры на основе мяса и риса. Серия Grandorf Fresh содержит свежее мясо, подходит для ежедневного кормления кошек и собак. Выбор зависит от возраста, активности и чувствительности питомца.
+https://schema.org/Question
+https://schema.org/name
+@value = Можно ли подобрать корм для чувствительного питомца?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Да. Часто подходят формулы с ягнёнком и рисом, а также ветеринарные диеты Grandorf Vet. Позвоните нам — подскажем подходящий рацион и фасовку.
+http://www.w3.org/1999/xhtml/vocab#role
+@id
+@value = http://www.w3.org/1999/xhtml/vocab#list
+https://schema.org/PetStore
+https://schema.org/name
+@value = Зоомагазин «Чемпион»
+https://schema.org/url
+@id
+@value = https://grandorf74.ru/
+https://schema.org/image
+@id
+@value = https://grandorf74.ru/assets/logo.svg
+https://schema.org/telephone
+@value = +7-962-485-46-25
+https://schema.org/address
+https://schema.org/PostalAddress
+https://schema.org/streetAddress
+@value = Свердловский проспект 37, помещение 13
+https://schema.org/addressLocality
+@value = Челябинск
+https://schema.org/addressRegion
+@value = Челябинская область
+https://schema.org/postalCode
+@value = 454000
+https://schema.org/addressCountry
+@value = RU
+https://schema.org/openingHoursSpecification
+https://schema.org/OpeningHoursSpecification
+https://schema.org/dayOfWeek
+@value = Monday
+https://schema.org/dayOfWeek
+@value = Tuesday
+https://schema.org/dayOfWeek
+@value = Wednesday
+https://schema.org/dayOfWeek
+@value = Thursday
+https://schema.org/dayOfWeek
+@value = Friday
+https://schema.org/opens
+@value = 10:00
+https://schema.org/closes
+@value = 20:00
+https://schema.org/OpeningHoursSpecification
+https://schema.org/dayOfWeek
+@value = Saturday
+https://schema.org/opens
+@value = 10:00
+https://schema.org/closes
+@value = 14:00
+https://schema.org/priceRange
+@value = ₽₽
+https://schema.org/sameAs
+@id
+@value = https://vk.com/acana_chel
+@id
+@value = https://t.me/acanachel
+https://schema.org/BreadcrumbList
+https://schema.org/itemListElement
+https://schema.org/ListItem
+https://schema.org/position
+@value = 1
+https://schema.org/name
+@value = Главная
+https://schema.org/item
+@value = https://grandorf74.ru/
+https://schema.org/FAQPage
+https://schema.org/mainEntity
+https://schema.org/Question
+https://schema.org/name
+@value = Где купить оригинальные корма Grandorf и Premier в Челябинске?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = В зоомагазине «Чемпион» по адресу: Челябинск, Свердловский проспект 37, помещение 13. Мы работаем с официальными дистрибьюторами Grandorf и Premier, продаём только оригинальную продукцию. Заказывайте онлайн в каталоге или по телефону +7 (962) 485-46-25.
+https://schema.org/Question
+https://schema.org/name
+@value = Есть ли доставка кормов Grandorf и Premier по Челябинску и области?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Да, доступна доставка по Челябинску и Челябинской области. Выберите товар в каталоге и оформите заказ — мы уточним удобное время и условия по телефону.
+https://schema.org/Question
+https://schema.org/name
+@value = Чем отличаются серии Grandorf Holistic и Grandorf Fresh?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Grandorf Holistic — гипоаллергенные рецептуры на основе мяса и риса. Серия Grandorf Fresh содержит свежее мясо и подходит для ежедневного кормления кошек и собак.
+https://schema.org/Question
+https://schema.org/name
+@value = Можно ли подобрать корм для чувствительного питомца?
+https://schema.org/acceptedAnswer
+https://schema.org/Answer
+https://schema.org/text
+@value = Да. Часто подходят формулы с ягнёнком и рисом, а также ветеринарные диеты Grandorf Vet. Позвоните нам — подскажем подходящий рацион и фасовку.
+resource = https://grandorf74.ru/index.html
+Ошибка
+ПРЕДУПРЕЖДЕНИЕ: Не выполнено обязательное условие для структурированных сниппетов Яндекс.Справочника: поле <b>address</b> отсутствует или пусто
+ПРЕДУПРЕЖДЕНИЕ: Не выполнено обязательное условие для структурированных сниппетов Яндекс.Справочника: для данной категории организаций необходимо указать <b>telephone</b>

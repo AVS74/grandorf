@@ -1,4 +1,67 @@
+# robots.txt — grandorf74.ru
+# База: всё открыто, служебное закрываем.
+
+# ── Общие правила (на всякий случай для прочих ботов)
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /docs/
+
+# Карта сайта-индекс (внутри уже разнесены статика и товары с изображениями)
 Sitemap: https://grandorf74.ru/sitemap.xml
+
+# ── Яндекс (основной приоритет)
+User-agent: Yandex
+Allow: /
+Disallow: /tools/
+Disallow: /docs/
 Host: grandorf74.ru
+Crawl-delay: 1
+
+# Разрешаем индексацию фото товаров
+User-agent: YandexImages
+Allow: /images/
+Allow: /assets/
+Allow: /products/
+Disallow: /tools/
+Disallow: /docs/
+
+# Чистим параметры в карточках и каталоге
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid&_openstat&from&ref product.html
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid&_openstat&from&ref catalog.html
+
+
+# ── Google
+User-agent: Googlebot
+Allow: /
+Disallow: /tools/
+Disallow: /docs/
+# Разрешаем ресурсы для рендера
+Allow: /*.js$
+Allow: /*.css$
+Allow: /assets/
+Allow: /products/
+
+# Картинки Google отдельно (на выдачу товарных фото)
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /products/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Googlebot-Mobile
+Allow: /
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: YandexTurbo
+Allow: /
+Disallow: /tools/
+Disallow: /docs/
+
+# Файл catalog запрещаем прочие варианты кроме прописанного в head canonical
+Disallow: /*?brand=
+Disallow: /*?type=
+Disallow: /*?kind=
+Disallow: /*?q=
+

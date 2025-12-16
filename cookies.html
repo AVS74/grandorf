@@ -1,0 +1,122 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Политика использования файлов cookies</title>
+<link rel="canonical" href="https://grandorf74.ru/cookies.html">
+<link rel="stylesheet" href="/styles.css">
+<style>main{max-width:900px;margin:40px auto;background:#fff;padding:20px;border-radius:12px;border:1px solid #E6E0CF}</style>
+</head>
+	
+	<body class="theme">
+<main class="container">
+  <h1 class="h1">Политика использования файлов cookies</h1>
+  <p>Дата обновления: 12.11.2025</p>
+  <p>На этой странице описано, для каких целей сайт использует файлы cookies и другие подобные технологии.
+     Полный текст Политики использования файлов cookies
+     <a href="/docs/policy-cookies.pdf" target="_blank" rel="noopener">можно прочитать по ссылке</a>.
+  </p>
+
+  <h2 class="h2">1. Что такое cookies</h2>
+  <p>Файлы cookies — небольшие текстовые файлы, которые сайт сохраняет на вашем устройстве. Они помогают сайту
+     работать корректно и понимать, какими разделами пользуются посетители.</p>
+
+  <h2 class="h2">2. Какие cookies мы используем</h2>
+  <ul>
+    <li><strong>Необходимые</strong> — обеспечение работы сайта (навигация, запоминание состояний). Согласие не требуется.</li>
+    <li><strong>Аналитические (Яндекс.Метрика)</strong> — обезличенная статистика посещаемости. Включаются только по вашему согласию.</li>
+  </ul>
+
+  <h2 class="h2">3. Управление cookies</h2>
+  <ul>
+    <li>При первом визите вы видите баннер с выбором: «Принять», «Отклонить аналитику» или «Настроить».</li>
+    <li>Сбросить выбор можно здесь:
+      <a href="javascript:localStorage.removeItem('cookieConsentV1');location.reload()">сбросить настройки</a>.
+    </li>
+    <li>Также можно отключить cookies в настройках браузера.</li>
+  </ul>
+
+  <h2 class="h2">4. Яндекс.Метрика</h2>
+  <p>Мы используем российский сервис «Яндекс.Метрика». Данные обрабатываются на серверах в РФ. Подробнее:
+     <a href="https://yandex.ru/legal/metrika_termsofuse/" target="_blank" rel="noopener">Условия Яндекс.Метрики</a>.
+  </p>
+
+  <h2 class="h2">5. Контакты оператора</h2>
+  <p>ИП Сергеев А.В., ИНН 745221892610, адрес осуществления деятельности: Челябинск, Свердловский проспект 37, пом. 13<br>
+     Тел.: +7 (962) 485-46-25
+  </p>
+
+  <p class="muted">Политика cookies является частью
+    <a href="/docs/policy-personal.pdf" target="_blank" rel="noopener">Политики обработки персональных данных</a>.
+  </p>
+</main>
+
+<!-- Cookie banner (RKN 2025, Яндекс.Метрика по согласию) -->
+<div id="cookie-banner" hidden>
+  <div class="cb-wrap">
+    <div class="cb-text">
+      Мы используем файлы cookies для работы сайта и аналитики (Яндекс.Метрика).
+      Подробнее: <a href="/cookies.html" target="_blank" rel="noopener">Политика cookies</a>
+      и <a href="/docs/policy-personal.pdf" target="_blank" rel="noopener">Политика ПДн (PDF)</a>.
+    </div>
+    <div class="cb-actions">
+      <button type="button" id="cb-accept">Принять все</button>
+      <button type="button" id="cb-settings">Настроить</button>
+      <button type="button" id="cb-reject">Отклонить аналитику</button>
+    </div>
+  </div>
+
+  <div class="cb-modal" id="cb-modal" hidden>
+    <div class="cb-modal-card">
+      <h3>Настройки файлов cookies</h3>
+      <label class="cb-opt">
+        <input type="checkbox" checked disabled> Необходимые (обязательные)
+      </label>
+      <label class="cb-opt">
+        <input type="checkbox" id="cb-analytics" checked> Аналитические (Яндекс.Метрика)
+      </label>
+      <div class="cb-actions">
+        <button type="button" id="cb-save">Сохранить</button>
+        <button type="button" id="cb-close">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const ID = 43060179;   // <-- ВСТАВЬ номер счётчика Я.Метрики, например 12345678
+  const KEY = 'cookieConsentV1';
+
+  const $b = document.getElementById('cookie-banner');
+  const $m = document.getElementById('cb-modal');
+
+  const getConsent = () => { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; } };
+  const setConsent = (analytics) => {
+    const payload = { necessary:true, analytics:!!analytics, ts:new Date().toISOString() };
+    localStorage.setItem(KEY, JSON.stringify(payload));
+    return payload;
+  };
+
+  function loadMetrika(){
+    if (!ID || window.ym) return;
+    (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) };
+      m[i].l=1*new Date(); k=e.createElement(t), a=e.getElementsByTagName(t)[0];
+      k.async=1; k.src=r; a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(ID, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+  }
+
+  const saved = getConsent();
+  if (!saved) $b.hidden = false;
+  if (saved?.analytics) loadMetrika();
+
+  document.getElementById('cb-accept').onclick = () => { setConsent(true); loadMetrika(); $b.hidden = true; };
+  document.getElementById('cb-reject').onclick = () => { setConsent(false); $b.hidden = true; };
+  document.getElementById('cb-settings').onclick = () => { $m.hidden = false; };
+  document.getElementById('cb-save').onclick = () => {
+    const ok = document.getElementById('cb-analytics').checked;
+    setConsent(ok); if (ok) loadMetrika(); $m.hidden = true; $b.hidden = true;
+  };
+  document.getElementById('cb-close').onclick = () => { $m.hidden = true; };
+})();
+</script>
+</body></html>

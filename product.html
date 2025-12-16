@@ -1,108 +1,540 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Описание корма — Витрина</title>
-  <!-- Подключите шрифты локально. Пример: /assets/fonts/... -->
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Купить корм Grandorf и Premier в Челябинске в зоомагазине «Чемпион». Состав, анализ, фасовки и цены, доставка по Челябинску и области.">
 
-<!-- Если шрифты ещё не залиты, временно сработают системные fallback’и. -->
+  <title>Карточка товара • Чемпион</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- Твой общий стиль проекта (проверь путь) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Базовые стили на случай отсутствия основного -->
+  <style>
+    :root { --card:#fff7e3; --muted:#6b6b6b; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, Segoe UI, Arial, sans-serif; background:#f1e1b9; margin:0; color:#1c1c1c; }
+    a { color: inherit; }
+    .container { max-width:1100px; margin:0 auto; padding:24px 16px; }
+    .breadcrumbs { font-size:14px; color:#666; margin-bottom:12px; }
+    .breadcrumbs a { text-decoration:none; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .card { background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 6px 24px rgba(0,0,0,.06); }
+    .brand { font-size:14px; color:var(--muted); margin-bottom:6px; }
+    h1 { font-size:32px; line-height:1.2; margin:4px 0 8px; }
+    .muted { color:var(--muted); font-size:14px; }
+    .sub { margin:6px 0 12px; color:#333; }
+    .block-title { font-weight:700; margin:6px 0 10px; }
+    .imgs { display:grid; gap:14px; }
+    .imgs img { width:100%; height:auto; border-radius:12px; background:#f5efe0; }
+    .pills { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+    .pills li { background:#fff; border:1px solid #e5e0d3; border-radius:999px; padding:6px 10px; font-size:14px; }
+    .list { margin:0; padding-left:18px; }
+    .sizes { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    .pill { background:#fff; border:1px solid #e5e0d3; border-radius:999px; padding:6px 10px; font-size:14px; }
+    .notfound { padding:16px; border-radius:12px; background:#fff3cd; }
+
+    /* Мини-навигация по блокам */
+    .product-subnav { display:flex; gap:12px; flex-wrap:wrap; margin:8px 0 12px; }
+    .product-subnav a { text-decoration:none; font-size:14px; padding:6px 10px; border-radius:999px; border:1px solid #e5e0d3; background:#fff; }
+    .product-subnav a.is-active { border-color:#D4AF37; box-shadow:0 0 0 2px rgba(212,175,55,.25) inset; }
+
+    /* Якоря и подсветка */
+    .anchor-section { scroll-margin-top: 90px; }
+    :target.card { box-shadow:0 0 0 3px rgba(212,175,55,.35), 0 6px 24px rgba(0,0,0,.08); animation:targetBlink .8s ease; }
+    @keyframes targetBlink { from { background: rgba(212,175,55,.12);} to { background: var(--card);} }
+
+
+	  
+    @media (max-width:900px) { .grid { grid-template-columns:1fr; } .anchor-section { scroll-margin-top: 70px; } }
+    @media print { details.accordion[open], details.accordion { display:block; } }
+  </style>
+	
+  <link id="canonicalLink" rel="canonical" href="">
+<script>
+  const id = new URLSearchParams(location.search).get('id');
+  if (id) {
+    document.getElementById('canonicalLink').href =
+      `https://grandorf74.ru/product.html?id=${encodeURIComponent(id)}`;
+  }
+</script>
+
+  <!-- Данные товаров -->
+  <script src="data.js"></script>
 </head>
-<body class="theme">
-<header class="site-header">
-  <a class="brand" href="index.html">
-    <img src="assets/logo.svg" alt="Логотип" class="logo">
-    <span class="brand-name">Чемпион</span>
-  </a>
-  <nav class="nav">
-    <a href="index.html" class="nav-link">Главная</a>
-    <a href="catalog.html" class="nav-link">Каталог</a>
-    <a href="index.html#contacts" class="nav-link">Контакты</a>
-  </nav>
-</header>
+<body>
+  <header class="container" style="padding-bottom:0;">
+    <div class="breadcrumbs">
+      <a href="index.html">Главная</a> • <a href="catalog.html">Каталог</a> • <span id="crumb-title">Товар</span>
+    </div>
+  </header>
 
-<main class="container product">
-  <a href="catalog.html" class="back-link">← В каталог</a>
-  <article id="product" class="product-layout" aria-live="polite">
-    <!-- Заполняется JS -->
-  </article>
-</main>
+  <main class="container" id="app">
+	<div id="seo-placeholder">
+  <noscript><h1>Корм Grandorf/Premier в Челябинске — карточка товара</h1>
+  <p>В этом разделе магазина «Чемпион» вы найдёте подробное описание состава, анализ, фасовки и цены натуральных кормов Grandorf Holistic, Fresh, Vet и Premier.</p>
+  <p>Страница формируется автоматически на основе каталога. Чтобы увидеть точное описание, откройте товар с включённым JavaScript.</p></noscript>
+</div>
+	</main>
 
-<footer class="site-footer">
+  <script>
+    // Источник данных
+    const PRODUCTS_DATA = (window.PRODUCTS ?? (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []));
+
+    // Утилиты
+	
+    const getQueryId = () => (new URLSearchParams(location.search).get('id') || '').trim();
+    const formatPrice = n => (n==null||isNaN(n)) ? '' : Number(n).toLocaleString('ru-RU') + ' ₽';
+    function formatWeightAuto(weightText, weightG){
+      if (weightText && String(weightText).trim()) return String(weightText).trim();
+      if (weightG!=null && !isNaN(+weightG)) {
+        const g = +weightG;
+        return g>=1000 ? (String(g/1000).replace('.',',')) + ' кг' : g + ' г';
+      }
+      return '';
+    }
+    function splitCompositionSmart(raw){
+      if(!raw||!raw.trim()) return [];
+      let out=[],buf=[],d=0;
+      for(const ch of raw){
+        if(ch==='('){d++;buf.push(ch);}
+        else if(ch===')'){d=Math.max(0,d-1);buf.push(ch);}
+        else if(ch===','&&d===0){const part=buf.join('').trim().replace(/[.;]\s*$/,''); if(part) out.push(part); buf=[];}
+        else buf.push(ch);
+      }
+      const last=buf.join('').trim().replace(/[.;]\s*$/,''); if(last) out.push(last);
+      return out;
+    }
+    function renderGuaranteedList(ga){
+      if(!ga||typeof ga!=='object') return '<p class="muted">Данные уточняются.</p>';
+      const order=[
+        ['protein_pct','Белок'],['fat_pct','Жир'],['fiber_pct','Клетчатка'],['ash_pct','Зола'],
+        ['moisture_pct','Влага'],['calcium_pct','Кальций'],['phosphorus_pct','Фосфор'],
+        ['magnesium_pct','Магний'],['omega3_pct','Омега-3'],['omega6_pct','Омега-6'],['energy_kcal','Энергетическая ценность']
+      ];
+      const li=[];
+      for(const [k,lab] of order){
+        if(ga[k]!=null){
+          li.push(k==='energy_kcal' ? `<li>${lab}: ${ga[k]} ккал/100 г</li>` : `<li>${lab}: ${ga[k]}%</li>`);
+        }
+      }
+      return li.length ? `<ul class="list">${li.join('')}</ul>` : '<p class="muted">Данные уточняются.</p>';
+    }
+    function renderFullAnalysis(sections, raw){
+      if(sections && Object.keys(sections).length){
+        const order=['analytical','metabolic_energy','additives','microelements','antioxidants','other','raw'];
+        const titles={analytical:'Аналитические составляющие',metabolic_energy:'Метаболическая/энергетическая ценность',additives:'Пищевые добавки',microelements:'Микроэлементы',antioxidants:'Антиоксиданты',other:'Анализ',raw:'Анализ'};
+        let html='';
+        for(const key of order){
+          if(!sections[key]) continue;
+          const lines = sections[key].split(';').map(s=>s.trim()).filter(Boolean);
+          const body = lines.length>1 ? `<ul class="list">${lines.map(s=>`<li>${s}</li>`).join('')}</ul>` : `<div class="muted" style="white-space:pre-wrap;">${sections[key]}</div>`;
+          html += `<div style="margin:8px 0;"><div class="block-title">${titles[key]}</div>${body}</div>`;
+        }
+        return html;
+      }
+      if(raw && raw.trim()){
+        const lines = raw.split(';').map(s=>s.trim()).filter(Boolean);
+        return lines.length>1 ? `<ul class="list">${lines.map(s=>`<li>${s}</li>`).join('')}</ul>` : `<div class="muted" style="white-space:pre-wrap;">${raw}</div>`;
+      }
+      return '<p class="muted">Данные уточняются.</p>';
+    }
+    function renderSizes(sizes){
+      if(!Array.isArray(sizes)||!sizes.length) return '<p class="muted">Цены скоро появятся.</p>';
+      return `<div class="sizes">${
+        sizes.map(s=>{
+          const w = formatWeightAuto(s.weight, s.weight_g);
+          const p = (s.price!=null)?s.price:s.price_rub;
+          return `<span class="pill">${w} — ${formatPrice(p)}</span>`;
+        }).join('')}
+      </div>`;
+    }
+    function setCrumbTitle(text){
+      document.getElementById('crumb-title').textContent = text || 'Товар';
+      document.title = (text?text+' • ':'') + 'Карточка товара • Чемпион';
+    }
+
+    // Рендер
+    (function init(){
+      const app = document.getElementById('app');
+      const id = getQueryId();
+      const item = PRODUCTS_DATA.find(p => String(p.id).trim() === id);
+
+    // убираем SEO-заглушку для живого пользователя
+    const placeholder = document.getElementById('seo-placeholder');
+    if (placeholder) placeholder.remove();
+
+		
+      if(!item){
+        setCrumbTitle('Товар не найден');
+        app.innerHTML = `
+          <div class="notfound"><strong>Товар не найден.</strong>
+            <div class="muted">Проверьте ссылку или вернитесь в <a href="catalog.html">каталог</a>.</div>
+          </div>`;
+        return;
+      }
+
+      const displayH1 =
+        (item.title_ru_catalog && item.title_ru_catalog.trim()) ||
+        (item.title_ru_short && item.title_ru_short.trim()) ||
+        item.title;
+
+      setCrumbTitle(displayH1);
+
+      const pack = item.images?.pack || '';
+      const kibble = item.images?.granule || '';
+
+      const compositionList = Array.isArray(item.composition) && item.composition.length
+        ? item.composition
+        : splitCompositionSmart(item.composition_raw || '');
+
+      const compositionHTML = compositionList.length
+        ? `<ul class="pills">${compositionList.map(li=>`<li>${li}</li>`).join('')}</ul>`
+        : (item.composition_raw ? `<div class="muted" style="white-space:pre-wrap;">${item.composition_raw}</div>` : `<p class="muted">Данные уточняются.</p>`);
+
+      const guaranteedHTML = renderGuaranteedList(item.analysis_guaranteed || {});
+      const fullAnalysisHTML = renderFullAnalysis(item.analysis_sections || {}, item.analysis_full_raw || '');
+      const subtitle = (item.subtitle_ru && item.subtitle_ru.trim()) ? item.subtitle_ru : (item.desc || '');
+
+      app.innerHTML = `
+        <section class="grid" style="align-items:start;">
+          <div class="imgs">
+            ${pack ? `<img src="${pack}" alt="${displayH1} — упаковка" onerror="this.remove()">` : ''}
+            ${kibble ? `<img src="${kibble}" alt="${displayH1} — гранула" onerror="this.remove()">` : ''}
+          </div>
+
+          <div>
+            <div class="brand">${item.brand || ''}</div>
+            <h1>${displayH1}</h1>
+            ${item.title && item.title !== displayH1 ? `<div class="muted">${item.title}</div>` : ''}
+            ${subtitle ? `<div class="sub">${subtitle}</div>` : ''}
+
+            <!-- Мини-навигация -->
+            <nav class="product-subnav">
+              <a href="#composition">Состав</a>
+              <a href="#sizes">Фасовки и цены</a>
+              <a href="#analysis">Анализ</a>
+            </nav>
+
+            <div class="card anchor-section" id="guaranteed" style="margin-bottom:14px;">
+              <div class="block-title">Гарантированный анализ</div>
+              ${guaranteedHTML}
+            </div>
+
+            <div class="card anchor-section" id="composition" style="margin-bottom:14px;">
+              <div class="block-title">Состав</div>
+              ${compositionHTML}
+            </div>
+
+            <div class="card anchor-section" id="sizes" style="margin-bottom:14px;">
+              <div class="block-title">Фасовки и цены</div>
+              ${renderSizes(item.sizes)}
+            </div>
+
+            <div class="card anchor-section" id="analysis">
+              <details class="accordion" id="full-analysis">
+                <summary>Полный анализ <span class="muted" style="font-weight:400">(раскрыть)</span></summary>
+                <div class="accordion-body">
+                  ${fullAnalysisHTML}
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+<section style="margin-top:22px;">
+ <!-- Аккордеон с полным SEO-текстом -->
+<details class="faq-item">
+  <summary class="faq-summary">
+    <span class="faq-question h3">Частые вопросы</span>
+  </summary>
+  <div class="faq-answer">
+      <ol>
+        <li>
+          <strong>Есть ли доставка по Челябинску и области?</strong><br>
+                  Да, мы привозим корма Grandorf и Premier по всему Челябинску, а по Челябинской области доставка согласуется отдельно.
+        Уточнить стоимость и время можно по телефону зоомагазина «Чемпион» или в мессенджерах, обычно заказы довозим в тот же
+        или следующий рабочий день.
+          </li>
+
+        <li>
+                  <strong>Как выбрать фасовку и цену именно для моего питомца?</strong><br>
+        Для знакомства с кормом удобнее взять небольшую фасовку, а для постоянного питания выгоднее большие упаковки
+        (8–10 кг) — цена за 1&nbsp;кг заметно ниже. Если сомневаетесь, сколько корма нужно вашей кошке или собаке,
+        мы поможем посчитать норму по весу и подобрать подходящий рацион Grandorf Holistic, Fresh, Vet или Premier.          
+        </li>
+
+        <li>
+          <strong>Оригинальный ли это корм и насколько свежая партия?</strong><br>
+        Все корма мы закупаем только у официальных дистрибьюторов, поэтому Grandorf и Premier в «Чемпионе» — только
+        оригинальная продукция с корректной русской маркировкой. Мы следим за сроками годности и регулярно обновляем остатки,
+        а при выдаче всегда показываем клиенту дату изготовления и срок хранения на упаковке.
+          </li>
+
+        <li>
+                  <strong>Можно ли подобрать корм при чувствительном ЖКТ или аллергии на курицу?</strong><br>
+        В ассортименте есть гипоаллергенные рецептуры без курицы, а также специализированные линейки Grandorf Vet для питомцев
+        с чувствительным пищеварением и особыми потребностями. Расскажите, какие есть ограничения и рекомендации врача,
+        и мы подберём несколько вариантов по составу и бюджету.
+        </li>
+
+        <li>
+         <strong>Как оформить заказ в зоомагазине «Чемпион»?</strong><br>
+        Вы можете оформить заказ по телефону, через мессенджеры или в нашем онлайн-каталоге, указав удобный способ доставки
+        и время. Оплата возможна наличными, переводом или картой в магазине; для постоянных покупателей действуют акции
+        и специальные предложения на корма Grandorf и Premier.
+        </li>
+
+        <li>
+          <strong>Если остались вопросы — поможем</strong><br>
+          Если нужно подобрать корм под возраст, вес, чувствительность ЖКТ или аллергию, звоните:
+          <a href="tel:+79624854625">+7 (962) 485-46-25</a>.<br>
+          Подберём рацион без навязывания брендов, по реальным потребностям питомца.
+        </li>
+      </ol>
+    </div>
+  </details>
+</section>
+      `;
+
+      // Локальное запоминание состояния аккордеона «Полный анализ»
+      const fa = document.getElementById('full-analysis');
+      if (fa) {
+        const key = `fa:${id}`;
+        try { if (localStorage.getItem(key) === 'open') fa.open = true; } catch(_) {}
+        fa.addEventListener('toggle', () => {
+          try { localStorage.setItem(key, fa.open ? 'open' : 'closed'); } catch(_) {}
+        });
+      }
+
+      // Подсветка активного пункта мини-навигации при прокрутке
+      const links = [...document.querySelectorAll('.product-subnav a')];
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      const io = new IntersectionObserver(entries => {
+        const visible = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if (!visible) return;
+        const idHash = '#' + visible.target.id;
+        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === idHash));
+      }, { rootMargin: '-40% 0px -50% 0px', threshold: [0,.25,.5,.75,1] });
+      sections.forEach(s => io.observe(s));
+
+      // Мягкая прокрутка, обновление хэша без засорения истории
+      links.forEach(a => {
+        a.addEventListener('click', e => {
+          const target = document.querySelector(a.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior:'smooth', block:'start' });
+          history.replaceState(null, '', a.getAttribute('href'));
+          links.forEach(x => x.classList.toggle('is-active', x === a));
+          if (target.id === 'analysis') document.getElementById('full-analysis')?.setAttribute('open','');
+        });
+      });
+
+      // Если пришли с #analysis — корректно проскроллим и раскроем
+      if (location.hash === '#analysis') {
+        document.getElementById('full-analysis')?.setAttribute('open','');
+        const t = document.querySelector('#analysis');
+        if (t) setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}), 0);
+      }
+    })();
+  </script>
+
+	
+
+
+	
+  <!-- ===== КОНТАКТЫ + КАРТА ===== -->
+<footer class="site-footer" id="contacts">
   <div class="contacts container">
+    <!-- Левая колонка: контакты -->
     <div class="contacts-block">
       <h3 class="h3">Контакты</h3>
       <p><strong>Зоомагазин «Чемпион»</strong></p>
       <p>Челябинск, Свердловский проспект 37, помещение 13</p>
-      <p>Телефон: <a href="tel:+79624854625">+7 (962) 485-46-25</a></p>
-      <p>График: ежедневно 10:00–20:00</p>
+      <p><strong>Телефон:</strong> <a href="tel:+79624854625">+7 (962) 485-46-25</a></p>
+		<p><strong>График:&nbsp;</strong></p>
+		<p>будни 10:00–20:00 </p>
+<p>суббота 10:00–14:00</p>
+	  <p>воскресенье — выходной</p>
     </div>
-    <div class="socials">
-      <h3 class="h3">Соцсети</h3>
-      <p>
-        <a class="social-link" href="#">ВКонтакте</a>
-        <a class="social-link" href="#">Telegram</a>
-      </p>
-    </div>
-  </div>
-  <div class="footer-small">© Чемпион, 2025</div>
-</footer>
 
-<button class="to-top" aria-label="Наверх">↑</button>
-
-<script src="data.js"></script>
-<script src="app.js" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('product');
-  const id = new URLSearchParams(location.search).get('id');
-  const item = PRODUCTS.find(p => String(p.id) === String(id));
-  if (!item) {
-    container.innerHTML = `<div class="empty">Товар не найден.</div>`;
-    return;
-  }
-
-  container.innerHTML = `
-    <div class="product-gallery">
-      <img src="${item.images?.pack || 'assets/placeholder-pack.jpg'}" alt="Упаковка ${item.title}">
-      ${item.images?.kibble ? `<img src="${item.images.kibble}" alt="Гранулы ${item.title}">` : ''}
-    </div>
-    <div class="product-info">
-      <div class="card-brand">${item.brand}</div>
-      <h1 class="h1 product-title">${item.title}</h1>
-      <p class="product-desc">${item.desc}</p>
-
-      <section class="specs">
-        <h2 class="h3">Гарантированный анализ</h2>
-        <ul class="spec-list">
-          ${item.analysis.map(a => `<li>${a}</li>`).join('')}
-        </ul>
-      </section>
-
-      <section class="specs">
-        <h2 class="h3">Добавки</h2>
-        <ul class="spec-list">
-          ${item.additives.map(a => `<li>${a}</li>`).join('')}
-        </ul>
-      </section>
-
-      <section class="sizes">
-        <h2 class="h3">Фасовки и цены</h2>
-        <ul class="size-list">
-          ${item.sizes.map(s => `<li><span>${s.weight}</span><strong>${s.price} ₽</strong></li>`).join('')}
-        </ul>
-      </section>
-
-      <div class="product-cta">
-        <a class="btn btn-primary" href="tel:+79624854625">Заказать по телефону</a>
-        <a class="btn btn-ghost" href="catalog.html?brand=${encodeURIComponent(item.brand)}">Смотреть ещё ${item.brand}</a>
+    <!-- Средняя колонка: политики -->
+    <div class="policy-column">
+      <h3 class="h3">Документы</h3>
+      <div class="policy-links">
+        <a class="policy-link"
+           href="/docs/policy-personal.pdf"
+           target="_blank"
+           rel="noopener">
+          Политика обработки персональных данных (PDF)
+        </a>
+        <a class="policy-link"
+           href="/docs/policy-cookies.pdf"
+           target="_blank"
+           rel="noopener">
+          Политика использования cookies (PDF)
+        </a>
       </div>
     </div>
-  `;
-});
+
+    <!-- Правая колонка: соцсети -->
+    <div class="socials" id="socials">
+      <h3 class="h3">Соцсети</h3>
+      <ul class="socials-list" role="list">
+<li>
+            <a class="social-pill" href="https://vk.com/acana_chel" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте — Чемпион">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 7c0-.6.4-1 1-1h3c.4 0 .8.3.9.7 0 0 1 3 2.2 4.7.6.8 1 .6 1 .1V7c0-.6.4-1 1-1h2c.5 0 1 .4 1 1v4.1c0 .6.4.8 1 .3 1.2-1.1 2.2-3.4 2.2-3.4.2-.5.6-.9 1.1-1h3c.7 0 1.1.8.7 1.4-1.7 2.7-5 7.6-7 8.9-1.8 1.1-2.9.6-3.5 0-.6-.6-1.1-1.3-1.6-2-.3-.4-.9-.5-1.3-.1l-1.2 1.1c-.3.3-.8.3-1.1 0C6.4 14.9 3 9.7 3 7z"/>
+              </svg>
+              <span>ВКонтакте</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-pill" href="https://t.me/acanachel" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Чемпион">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9.7 14.6 9.5 18c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.3-.7l2.4-11c.2-.9-.3-1.3-1-1.1L4.7 10c-.9.3-.9.8-.2 1l3.7 1.2 8.6-5.4c.4-.3.8-.1.5.2l-7.6 7.6z"/>
+              </svg>
+              <span>Telegram</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+    <!-- Карта на всю ширину снизу -->
+<div class="footer-map" aria-label="Карта расположения магазина">
+  <script async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A261344b5132bc5b57249d9e0b433792eee377268fc636d8954d2af3061b69d82&amp;width=100%25&amp;height=100%25&amp;lang=ru_RU&amp;scroll=true"></script>
+  <noscript>
+    <p>
+      Наш адрес: Челябинск, Свердловский проспект 37, помещение 13.
+      <a href="https://yandex.ru/maps/..." target="_blank" rel="noopener">Посмотреть на карте</a>
+    </p>
+  </noscript>
+</div>
+
+  </div>
+	<div class="footer-small">© Чемпион, 2025</div>
+</footer>
+	
+	<button id="toTopBtn" class="to-top" type="button" aria-label="Наверх" title="Наверх">
+  ↑
+</button>
+
+<script>
+  (function () {
+    const btn = document.getElementById('toTopBtn');
+    if (!btn) return;
+
+    // показать/скрыть при прокрутке
+    const onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      btn.classList.toggle('is-visible', y > 600);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // плавный скролл наверх
+    btn.addEventListener('click', () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      btn.blur();
+    });
+
+    // чтобы не залипала над футером на сверхнизких экранах (мягкая защита)
+    const ro = new ResizeObserver(() => {
+      const footer = document.querySelector('footer, .site-footer');
+      if (!footer) return;
+      const vpH = window.innerHeight;
+      const rect = footer.getBoundingClientRect();
+      // если футер почти в кадре — поднимем кнопку чуть выше
+      btn.style.bottom = rect.top < vpH - 40 ? '24px' : '88px';
+    });
+    ro.observe(document.body);
+  })();
 </script>
+
+<!-- Cookie banner (RKN 2025, Яндекс.Метрика по согласию) -->
+<div id="cookie-banner" hidden>
+  <div class="cb-wrap">
+    <div class="cb-text">
+      Мы используем файлы cookies для работы сайта зоомагазина «Чемпион» и аналитики (Яндекс.Метрика).
+      Подробнее: <a href="cookies.html" target="_blank" rel="noopener">Политика cookies</a>
+      и <a href="/docs/policy-personal.pdf" target="_blank" rel="noopener">Политика обработки Персональных Данных (PDF)</a>.
+    </div>
+    <div class="cb-actions">
+      <button type="button" id="cb-accept">Принять все</button>
+      <button type="button" id="cb-settings">Настроить</button>
+      <button type="button" id="cb-reject">Отклонить аналитику</button>
+    </div>
+  </div>
+
+  <!-- Простое модальное "Настройки" -->
+  <div class="cb-modal" id="cb-modal" hidden>
+    <div class="cb-modal-card">
+      <h3>Настройки файлов cookies</h3>
+      <label class="cb-opt">
+        <input type="checkbox" checked disabled> Необходимые (обязательные)
+      </label>
+      <label class="cb-opt">
+        <input type="checkbox" id="cb-analytics" checked> Аналитические (Яндекс.Метрика)
+      </label>
+      <div class="cb-actions">
+        <button type="button" id="cb-save">Сохранить</button>
+        <button type="button" id="cb-close">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const ID = /* ВСТАВЬ свой номер счётчика */ 43060179;   // например 12345678
+  const KEY = 'cookieConsentV1'; // журнал согласия (версия для будущих обновлений)
+
+  const $b = document.getElementById('cookie-banner');
+  const $m = document.getElementById('cb-modal');
+
+  const getConsent = () => {
+    try { return JSON.parse(localStorage.getItem(KEY) || 'null'); }
+    catch { return null; }
+  };
+  const setConsent = (analytics) => {
+    const payload = { necessary:true, analytics:!!analytics, ts:new Date().toISOString() };
+    localStorage.setItem(KEY, JSON.stringify(payload));
+    return payload;
+  };
+
+  function loadMetrika(){
+    if (!ID || window.ym) return;
+    (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) };
+      m[i].l=1*new Date(); k=e.createElement(t), a=e.getElementsByTagName(t)[0];
+      k.async=1; k.src=r; a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(ID, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+  }
+
+  const saved = getConsent();
+  if (!saved) $b.hidden = false;
+  if (saved?.analytics) loadMetrika();
+
+  // Кнопки баннера
+  document.getElementById('cb-accept').onclick = () => {
+    setConsent(true); loadMetrika(); $b.hidden = true;
+  };
+  document.getElementById('cb-reject').onclick = () => {
+    setConsent(false); $b.hidden = true;
+  };
+  document.getElementById('cb-settings').onclick = () => { $m.hidden = false; };
+
+  // Модалка
+  document.getElementById('cb-save').onclick = () => {
+    const ok = document.getElementById('cb-analytics').checked;
+    setConsent(ok); if (ok) loadMetrika(); $m.hidden = true; $b.hidden = true;
+  };
+  document.getElementById('cb-close').onclick = () => { $m.hidden = true; };
+})();
+</script>
+
 </body>
 </html>

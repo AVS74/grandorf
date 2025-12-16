@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Печать ценников • Чемпион</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{
+      --tag-w: 70mm;   /* ИЗМЕНИ ЗДЕСЬ — ширина */
+      --tag-h: 50mm;   /* ИЗМЕНИ ЗДЕСЬ — высота */
+      --gap: 6mm;
+      --brand-color: #2c3b5c;
+      --accent: #D4AF37;
+    }
+    @page { size: A4 portrait; margin: 8mm; }
+    *{box-sizing:border-box;}
+    body{margin:0;padding:16px;font:14px/1.35 system-ui,Arial;background:#faf7ee;}
+    .controls{display:grid;gap:10px;grid-template-columns:1fr 1fr 1fr 1fr;background:#fff;border:1px solid #e6e0cf;border-radius:12px;padding:12px;}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #e6e0cf;border-radius:999px;background:#fff;cursor:pointer;}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid #cdbb8a;background:#f5ead0;cursor:pointer;font-weight:700;}
+    .btn-primary{background:#f0e3bb;border-color:#b79c48;}
+    .btn-success{background:#d4edda;border-color:#c3e6cb;color:#155724;}
+    .grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fit,minmax(var(--tag-w),1fr));}
+    .tag{width:var(--tag-w);height:var(--tag-h);border:1px solid #dacfae;border-radius:10px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+    .tag-brand{font:700 11px Montserrat,Arial;color:var(--brand-color);}
+    .tag-title{font:600 13px/1.25 Arial;margin:4px 0 2px;}
+    .bar{height:3px;background:linear-gradient(90deg,var(--brand-color),var(--accent));border-radius:2px;}
+    .tag-line{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;}
+    .tag-price{font:800 22px Montserrat,Arial;color:#111;}
+    .tag-weight{font:600 13px Arial;color:#333;padding:4px 8px;border:1px solid #e6e0cf;border-radius:999px;background:#fffef9;}
+    .tag-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px dashed #e6dfc4;padding-top:6px;margin-top:6px;font:12px Arial;}
+    .tag-shop{color:#333;}
+    .tag-placeholder{width:24mm;height:24mm;border:1px dashed #ccc;border-radius:4px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;font:9px Arial;color:#999;}
+
+    @media print{
+      *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+      header,.controls,.picker,.muted,.print-hint{display:none!important;}
+      body,.print-area{background:#fff!important;padding:0!important;margin:0!important;}
+      .grid{gap:var(--gap);padding:0;margin:0;}
+      .tag{box-shadow:0 2px 8px rgba(0,0,0,.15)!important;break-inside:avoid;}
+      .bar{background:linear-gradient(90deg,#2c3b5c,#D4AF37)!important;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Печать ценников</h1>
+    <div style="color:#6b6b6b">Источник: data.js → PRODUCTS</div>
+  </header>
+
+  <section class="controls">
+    <div class="col"><label>Бренд</label><select id="brand"><option value="">Все</option></select></div>
+    <div class="col"><label>Животное</label><select id="animal"><option value="">Кошка/Собака</option><option value="cat">Кошка</option><option value="dog">Собака</option></select></div>
+    <div class="col"><label>Тип</label><select id="kind"><option value="">Сухой/Влажный</option><option value="dry">Сухой</option><option value="wet">Влажный</option></select></div>
+    <div class="col"><label>Поиск</label><input id="q" type="text" placeholder="Название..."></div>
+
+   
