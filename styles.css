@@ -98,9 +98,16 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* ===== Герой и баннер ===== */
-.hero{
-  display:grid; grid-template-columns: 1.2fr .8fr; gap: var(--gap);
-  align-items: stretch; padding: clamp(24px, 5vw, 64px) var(--gap);
+.hero {
+  display: grid; 
+  /* 👇 Задаем адаптивные пропорции: левая часть гибкая, правая сжимается от 380px до 260px */
+  grid-template-columns: 1fr minmax(260px, 380px); 
+  gap: var(--gap);
+  align-items: center; /* Выравнивание по центру высоты */
+  padding: clamp(24px, 5vw, 64px) var(--gap);
+  max-width: 1200px;   
+  margin: 0 auto;      
+  width: 100%;         
 }
 .hero-inner{
   display:flex; flex-direction:column; justify-content:center; gap:18px;
@@ -119,19 +126,33 @@ img{ max-width:100%; height:auto; display:block; }
   font-family: var(--font-cta);
 }
 
-.hero-banner{
+.hero-banner {
   border-radius: var(--radius-lg);
-  background: var(--g-grandorf); /* тема по умолчанию */
-  box-shadow: var(--shadow-soft);
-  position: relative; overflow: hidden; display:flex; align-items:flex-end; padding: 24px;
-  min-height: 260px;
+  background: transparent; 
+  box-shadow: none; 
+  position: relative; 
+  overflow: hidden; 
+  display: block; 
+  width: 100%;        /* Растягивается на всю выделенную колонку */
+  justify-self: end;  /* Прижимается к правому краю */
 }
+
 .banner-tag{
   position:absolute; top:14px; left:14px; padding:6px 10px; font-size:12px;
   background: var(--grain); color: var(--white); border-radius:999px; font-weight:700;
   font-family: var(--font-cta);
 }
 .banner-text{ font-size: clamp(18px, 2.3vw, 26px); margin-bottom:8px; }
+
+/* 👇 Обеспечиваем идеальную адаптивность самой картинки */
+.hero-banner img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
 
 /* ===== Кнопки ===== */
 .btn{
@@ -307,7 +328,29 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* Адаптив — на телефонах колонки идут вертикально */
+/* Адаптив — на телефонах колонки идут вертикально */
 @media (max-width: 768px) {
+  /* 👇 Добавляем адаптив для главного экрана */
+  .hero {
+    grid-template-columns: 1fr; /* Схлопываем сетку в одну колонку */
+    gap: 32px;                  /* Расстояние между текстом и баннером */
+    text-align: center;         /* Центрируем заголовки */
+  }
+
+  .hero-inner {
+    align-items: center;        /* Центрируем кнопку внутри Flexbox */
+  }
+
+  .hero-cta {
+    justify-content: center;    /* Центрируем кнопку "Выбрать корм" */
+  }
+
+  .hero-banner {
+    justify-self: center;       /* Центрируем сам баннер на мобильном */
+    max-width: 340px;           /* Ограничиваем ширину, чтобы на телефонах он не был огромным */
+  }
+  /* 👆 Конец правок для главного экрана */
+
   .contacts {
     flex-direction: column;
     gap: 24px;
@@ -322,14 +365,6 @@ img{ max-width:100%; height:auto; display:block; }
   .footer-map {
     margin-top: 8px;
   }
-}
-
-.footer-small {
-  margin-top: 12px;
-  padding-top: 8px;
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-align: center;   /* вот это главное */
 }
 
 /* ===== Кнопка Наверх ===== */
@@ -551,12 +586,22 @@ select:focus, input[type="search"]:focus{ border-color: var(--olive); }
 
 /* ===== Адаптив ===== */
 @media (max-width: 1100px) {
-  .hero{ grid-template-columns: 1fr; }
-  .grid-choices{ grid-template-columns: repeat(3, 1fr); }
-  .trust-grid{ grid-template-columns: 1fr 1fr; }
-  .filters{ grid-template-columns: repeat(4, 1fr); }
-  .grid-cards{ grid-template-columns: repeat(2, 1fr); }
-  .product-layout{ grid-template-columns: 1fr; }
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center; /* Центрируем заголовки, когда они одни в колонке */
+    gap: 32px;          /* Делаем аккуратный отступ между текстом и баннером */
+  }
+
+  .hero-inner {
+    align-items: center; /* Центрируем кнопку "Выбрать корм" */
+  }
+
+  /* 👇 ДОБАВЬТЕ ЭТОТ БЛОК */
+  .hero-banner {
+    justify-self: center; /* Центрируем баннер по горизонтали */
+    max-width: 360px;     /* Ограничиваем его ширину, чтобы он не раздувался */
+    width: 100%;          /* Позволяет ему сжиматься на экранах мобильных */
+  }
 }
 
 @media (max-width: 720px) {
@@ -568,6 +613,7 @@ select:focus, input[type="search"]:focus{ border-color: var(--olive); }
   .filter.wide{ grid-column: span 2; }
   .grid-cards{ grid-template-columns: 1fr; }
 }
+
 
 /* ===== Доступность ===== */
 .reduced-motion * { transition: none !important; animation: none !important; }

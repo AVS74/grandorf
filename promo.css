@@ -1,0 +1,265 @@
+/* promo.css — стили только для промо-страницы
+   Безопасно: не ломает остальные страницы сайта. */
+
+.promo-page {
+  background: #F5F5F5;
+  color: #1C1C1C;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Контейнер */
+.promo-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Шапка */
+.promo-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(245,245,245,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.promo-header .promo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  gap: 12px;
+}
+
+.promo-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.promo-logo {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.promo-brandname {
+  font-family: Montserrat, Inter, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: Montserrat, Inter, Arial, sans-serif;
+  border: 1px solid transparent;
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: #2c3b5c;
+  border-color: #2c3b5c;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(44,59,92,0.35);
+  color: #2c3b5c;
+}
+
+.btn-lg { padding: 12px 16px; border-radius: 16px; }
+
+.promo-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Hero */
+.promo-hero {
+  padding: 28px 0 12px;
+  background: linear-gradient(135deg, #F5F5F5 0%, #EFEFEF 100%);
+}
+
+.promo-hero .promo-wrap {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.promo-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.1;
+  color: #2c3b5c;
+}
+
+.promo-subtitle {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(0,0,0,0.72);
+}
+
+.promo-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(44,59,92,0.08);
+  color: #2c3b5c;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.promo-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.promo-note {
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.65);
+}
+
+/* Правая карточка */
+.info-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.info-card__title {
+  font-family: Montserrat, Inter, Arial, sans-serif;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #2c3b5c;
+}
+
+.info-card__text { color: rgba(0,0,0,0.72); line-height: 1.55; }
+.info-card__buttons { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.info-card__small { margin-top: 10px; font-size: 12.5px; }
+
+/* Секции */
+.promo-section { padding: 22px 0; }
+.promo-h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  margin: 0 0 14px;
+  color: #2c3b5c;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.promo-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.promo-h3 {
+  margin: 0 0 10px;
+  font-family: Montserrat, Inter, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #2c3b5c;
+}
+
+.promo-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(0,0,0,0.78);
+  line-height: 1.55;
+}
+
+.promo-list li { margin: 8px 0; }
+.promo-list li .muted { font-size: 13px; color: rgba(0,0,0,0.55); }
+
+.promo-list .divider {
+  list-style: none;
+  height: 1px;
+  margin: 12px 0;
+  padding: 0;
+  background: rgba(0,0,0,0.08);
+}
+
+/* Блок-внимание */
+.promo-attn {
+  margin-top: 14px;
+  background: rgba(212,175,55,0.12);
+  border: 1px solid rgba(212,175,55,0.28);
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: rgba(0,0,0,0.78);
+}
+
+/* Как купить */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.how-item {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+}
+
+.how-title {
+  font-weight: 800;
+  color: #2c3b5c;
+  margin-bottom: 6px;
+  font-family: Montserrat, Inter, Arial, sans-serif;
+}
+
+.how-text { color: rgba(0,0,0,0.72); line-height: 1.55; }
+
+/* Футер */
+.promo-footer {
+  padding: 18px 0 24px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: #F5F5F5;
+}
+
+/* Утилиты */
+.muted { color: rgba(0,0,0,0.55); }
+
+/* Адаптив */
+@media (max-width: 980px) {
+  .promo-hero .promo-wrap { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; }
+  .promo-title { font-size: 30px; }
+}
