@@ -31,11 +31,8 @@
     .pills { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
     .pills li { background:#fff; border:1px solid #e5e0d3; border-radius:999px; padding:6px 10px; font-size:14px; }
     .list { margin:0; padding-left:18px; }
-    .sizes { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
-    .size-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .sizes { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
     .pill { background:#fff; border:1px solid #e5e0d3; border-radius:999px; padding:6px 10px; font-size:14px; }
-    .btn-add-cart { padding:6px 14px; font-size:13px; }
-    .btn-add-cart:disabled { opacity:.6; cursor:default; transform:none; }
     .notfound { padding:16px; border-radius:12px; background:#fff3cd; }
 
     /* Мини-навигация по блокам */
@@ -65,8 +62,6 @@
 
   <!-- Данные товаров -->
   <script src="data.js"></script>
-  <!-- Корзина и оформление заказа -->
-  <script src="cart.js"></script>
 </head>
 <body>
   <header class="container" style="padding-bottom:0;">
@@ -145,29 +140,13 @@
       }
       return '<p class="muted">Данные уточняются.</p>';
     }
-    function renderSizes(sizes, item, displayTitle){
+    function renderSizes(sizes){
       if(!Array.isArray(sizes)||!sizes.length) return '<p class="muted">Цены скоро появятся.</p>';
-      const img = item?.images?.pack || '';
-      const brand = item?.brand || '';
-      const safeTitle = String(displayTitle||'').replace(/"/g,'&quot;');
-      const safeBrand = String(brand||'').replace(/"/g,'&quot;');
       return `<div class="sizes">${
         sizes.map(s=>{
           const w = formatWeightAuto(s.weight, s.weight_g);
           const p = (s.price!=null)?s.price:s.price_rub;
-          const priceNum = Number(p);
-          return `
-            <div class="size-row">
-              <span class="pill">${w} — ${formatPrice(p)}</span>
-              ${isNaN(priceNum) ? '' : `
-              <button type="button" class="btn btn-ghost btn-add-cart"
-                data-id="${item.id}"
-                data-weight="${w}"
-                data-price="${priceNum}"
-                data-title="${safeTitle}"
-                data-brand="${safeBrand}"
-                data-img="${img}">В корзину</button>`}
-            </div>`;
+          return `<span class="pill">${w} — ${formatPrice(p)}</span>`;
         }).join('')}
       </div>`;
     }
@@ -250,7 +229,7 @@
 
             <div class="card anchor-section" id="sizes" style="margin-bottom:14px;">
               <div class="block-title">Фасовки и цены</div>
-              ${renderSizes(item.sizes, item, displayH1)}
+              ${renderSizes(item.sizes)}
             </div>
 
             <div class="card anchor-section" id="analysis">
@@ -318,26 +297,6 @@
   </details>
 </section>
       `;
-
-      // Кнопки «В корзину» у фасовок
-      document.getElementById('sizes')?.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn-add-cart');
-        if (!btn) return;
-        if (!window.Cart) return;
-        window.Cart.add({
-          id: btn.dataset.id,
-          weight: btn.dataset.weight,
-          price: Number(btn.dataset.price),
-          title: btn.dataset.title,
-          brand: btn.dataset.brand,
-          img: btn.dataset.img,
-          qty: 1
-        });
-        const original = btn.textContent;
-        btn.textContent = 'Добавлено ✓';
-        btn.disabled = true;
-        setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1000);
-      });
 
       // Локальное запоминание состояния аккордеона «Полный анализ»
       const fa = document.getElementById('full-analysis');

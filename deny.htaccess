@@ -1,0 +1,8 @@
+# Переименуйте этот файл в .htaccess и положите в ту же папку, что и config.php,
+# order.php, mailer.php — это запретит прямые обращения к служебным файлам
+# по ссылке из браузера (config.php всё равно исполняется как PHP сервером
+# при вызове из order.php, это ограничение касается только прямого доступа извне).
+
+<FilesMatch "^(config\.php|mailer\.php|orders_fallback\.log|order_errors\.log)$">
+    Require all denied
+</FilesMatch>
